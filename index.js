@@ -1,7 +1,7 @@
 function(){
   var jQuery = require('jquery');
   /* =========================================================
-   * bootstrap-modal.js v2.3.0
+   * bootstrap-modal.js v2.3.1
    * http://twitter.github.com/bootstrap/javascript.html#modals
    * =========================================================
    * Copyright 2012 Twitter, Inc.
@@ -150,7 +150,7 @@ function(){
         }
   
       , removeBackdrop: function () {
-          this.$backdrop.remove()
+          this.$backdrop && this.$backdrop.remove()
           this.$backdrop = null
         }
   
