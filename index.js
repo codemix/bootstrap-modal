@@ -1,7 +1,7 @@
 function(){
   var jQuery = require('jquery');
   /* =========================================================
-   * bootstrap-modal.js v2.2.1
+   * bootstrap-modal.js v2.2.2
    * http://twitter.github.com/bootstrap/javascript.html#modals
    * =========================================================
    * Copyright 2012 Twitter, Inc.
@@ -195,6 +195,8 @@ function(){
    /* MODAL PLUGIN DEFINITION
     * ======================= */
   
+    var old = $.fn.modal
+  
     $.fn.modal = function (option) {
       return this.each(function () {
         var $this = $(this)
@@ -213,6 +215,15 @@ function(){
     }
   
     $.fn.modal.Constructor = Modal
+  
+  
+   /* MODAL NO CONFLICT
+    * ================= */
+  
+    $.fn.modal.noConflict = function () {
+      $.fn.modal = old
+      return this
+    }
   
   
    /* MODAL DATA-API
