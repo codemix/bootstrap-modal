@@ -1,7 +1,7 @@
 function(){
   var jQuery = require('jquery');
   /* =========================================================
-   * bootstrap-modal.js v2.2.2
+   * bootstrap-modal.js v2.3.0
    * http://twitter.github.com/bootstrap/javascript.html#modals
    * =========================================================
    * Copyright 2012 Twitter, Inc.
@@ -62,8 +62,7 @@ function(){
               that.$element.appendTo(document.body) //don't move modals dom position
             }
   
-            that.$element
-              .show()
+            that.$element.show()
   
             if (transition) {
               that.$element[0].offsetWidth // force reflow
@@ -141,12 +140,13 @@ function(){
           })
         }
   
-      , hideModal: function (that) {
-          this.$element
-            .hide()
-            .trigger('hidden')
-  
-          this.backdrop()
+      , hideModal: function () {
+          var that = this
+          this.$element.hide()
+          this.backdrop(function () {
+            that.removeBackdrop()
+            that.$element.trigger('hidden')
+          })
         }
   
       , removeBackdrop: function () {
@@ -174,6 +174,8 @@ function(){
   
             this.$backdrop.addClass('in')
   
+            if (!callback) return
+  
             doAnimate ?
               this.$backdrop.one($.support.transition.end, callback) :
               callback()
@@ -182,8 +184,8 @@ function(){
             this.$backdrop.removeClass('in')
   
             $.support.transition && this.$element.hasClass('fade')?
-              this.$backdrop.one($.support.transition.end, $.proxy(this.removeBackdrop, this)) :
-              this.removeBackdrop()
+              this.$backdrop.one($.support.transition.end, callback) :
+              callback()
   
           } else if (callback) {
             callback()
