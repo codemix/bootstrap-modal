@@ -1,4 +1,4 @@
-function(){
+(function(){
   var jQuery = require('jquery');
   /* =========================================================
    * bootstrap-modal.js v2.3.1
@@ -248,4 +248,4 @@ function(){
   
   }(jQuery);
   
-}()
+})()
