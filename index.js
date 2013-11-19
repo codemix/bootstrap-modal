@@ -1,4 +1,4 @@
-(function(){
+;(function(){
   /* ========================================================================
    * Bootstrap: modal.js v3.0.2
    * http://getbootstrap.com/javascript/#modals
@@ -246,4 +246,4 @@
   
   }(jQuery);
   
-})()
+})();
